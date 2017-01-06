@@ -85,7 +85,7 @@ void buttonTask(void) {
             break ;
         case BUTTONCLOSED :
             if (!runIsPressed() || !stopIsPressed()) {
-								runPressed = 0;
+		runPressed = 0;
                 b_state = BUTTONBOUNCE ;
                 bounceCounter = 50 ;
             }
@@ -182,13 +182,13 @@ void controlMotor(void) {
             
         case MOVECOMPLETED:
             if (runPressed) {
-							PTB->PCOR |= MASK(GREEN_LED_POS) ;
+		PTB->PCOR |= MASK(GREEN_LED_POS) ;
                 if(!isMoving(m1)) {
                     sys_state = MOVE;
                 } else { //the motor is still running
                     stopMotor(m1);
                     totalSteps += abs(getSteps(m1));
-										stopTimer(0);
+			stopTimer(0);
                     sys_state = MOVE;
                 }
                 break;
